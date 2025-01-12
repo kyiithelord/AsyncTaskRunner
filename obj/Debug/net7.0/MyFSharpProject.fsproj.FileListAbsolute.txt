@@ -1,0 +1,4 @@
+/home/kyiithelord/Desktop/dddd/MyFSharpProject/obj/Debug/net7.0/MyFSharpProject.fsproj.AssemblyReference.cache
+/home/kyiithelord/Desktop/dddd/MyFSharpProject/obj/Debug/net7.0/MyFSharpProject.AssemblyInfoInputs.cache
+/home/kyiithelord/Desktop/dddd/MyFSharpProject/obj/Debug/net7.0/MyFSharpProject.AssemblyInfo.fs
+/home/kyiithelord/Desktop/dddd/MyFSharpProject/obj/Debug/net7.0/MyFSharpProject.fsproj.CoreCompileInputs.cache
