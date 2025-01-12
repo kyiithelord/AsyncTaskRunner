@@ -5,8 +5,8 @@ open System.IO
 open System.Threading.Tasks
 open Microsoft.Extensions.Configuration
 open Microsoft.Extensions.Logging
-open MyFSharpProject.Module1
-open MyFSharpProject.Module2
+open AsyncModuleExecutor.Module1
+open AsyncModuleExecutor.Module2
 
 module Program =
 
