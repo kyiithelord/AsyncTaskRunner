@@ -7,6 +7,7 @@ open Microsoft.Extensions.Configuration
 open Microsoft.Extensions.Logging
 open AsyncModuleExecutor.Module1
 open AsyncModuleExecutor.Module2
+open AsyncModuleExecutor.Algorithm
 
 module Program =
 
@@ -50,6 +51,17 @@ module Program =
             | ex -> logger.LogError("Error in Module2: {0}", ex.Message)
         )
 
+    let runTSPAsync (logger: ILogger) =
+        Task.Run(fun () ->
+            try
+                logger.LogInformation("Running TSP Algorithm")
+                let points = [(0.0, 0.0); (1.0, 1.0); (2.0, 2.0); (3.0, 3.0)]
+                let (path, distance) = solveTSP points
+                logger.LogInformation("Shortest path: {0}, Distance: {1}", path, distance)
+            with
+            | ex -> logger.LogError("Error in TSP Algorithm: {0}", ex.Message)
+        )
+
     [<EntryPoint>]
     let main argv =
         let logger = configureLogging()
@@ -62,10 +74,12 @@ module Program =
         match operation with
         | "module1" -> runModule1Async(logger).Wait()
         | "module2" -> runModule2Async(logger).Wait()
+        | "tsp" -> runTSPAsync(logger).Wait()
         | _ ->
-            logger.LogInformation("Running both modules")
+            logger.LogInformation("Running all modules")
             let task1 = runModule1Async(logger)
             let task2 = runModule2Async(logger)
-            Task.WhenAll(task1, task2).Wait()
+            let task3 = runTSPAsync(logger)
+            Task.WhenAll(task1, task2, task3).Wait()
 
         0 // return an integer exit code
